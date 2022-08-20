@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -10,18 +10,47 @@
   <!-- ReactJS -->
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- jQuery -->
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
   
   <!-- WinUI -->
   <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
   
   <!-- Local -->
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="fonts/FluentSystemIcons-Regular.css" />
+
+  <script type="module" src="helpers/ThemeHelper.js"></script>
   <script type="module" src="main.js"></script>
 </head>
 
 <body>
   <div id="root">
-    
+    <span id="app-navigation-bar" class="navigation-bar" style="left: 0px; top: 0px; bottom: 0px; width: 76px; height: 100%; border-radius: 0 10px 10px 0; text-align: center; display: table;">
+      <div id="clock-menu-item" class="navigation-bar-item" style="margin-top: 5px;">
+        <i id="clock-icon" class="fluent-icon-filled fluent-icon-filled-accent"></i><br />
+        <span id="clock-label" class="navigation-bar-label-accent">Clock</span>
+        <div class="material-ripple"></div>
+      </div>
+      <div id="world-clock-menu-item" class="navigation-bar-item" style="margin-top: 0px;">
+        <i id="world-clock-icon" class="fluent-icon navigation-bar-item-icon" style="font-size: 33px;"></i><br />
+        <span id="world-clock-label" class="navigation-bar-label">World clock</span>
+        <div class="material-ripple"></div>
+      </div>
+      <div id="weather-menu-item" class="navigation-bar-item" style="margin-top: 0px;">
+        <i id="weather-icon" class="fluent-icon navigation-bar-item-icon"></i><br />
+        <span id="weather-label" class="navigation-bar-label">Weather</span>
+        <div class="material-ripple"></div>
+      </div>
+      <div id="settings-menu-item" class="navigation-bar-item" style="margin-top: 0px; position: absolute; bottom: 5px; left: -1px;">
+        <i id="settings-icon" class="fluent-icon navigation-bar-item-icon"></i><br />
+        <span id="settings-label" class="navigation-bar-label">Settings</span>
+        <div class="material-ripple"></div>
+      </div>
+      <span id="nav-selector" class="navigation-bar-selector" style="top: 32px;"></span>
+    </span>
   </div>
 </body>
 </html>
