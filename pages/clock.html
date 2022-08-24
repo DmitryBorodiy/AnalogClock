@@ -15,24 +15,43 @@
   
   <!-- Local -->
   <link rel="stylesheet" href="css/clock.css" />
+  <link rel="stylesheet" href="../fonts/FluentSystemIcons-Regular.css" />
+
   <script type="module" src="clock.js"></script>
   <script type="module" src="../helpers/ThemeHelper.js"></script>
 </head>
 
 <body>
-  <div id="root" onload="Page_OnLoaded()">
-    <div id="clock-container">
-    <div class="clock">
-      <div class="hour">
-        <div class="hr" id="hr"></div>
-      </div>
-      <div class="min">
-        <div class="mn" id="mn"></div>
-      </div>
-      <div class="sec">
-        <div class="sc" id="sc"></div>
-      </div>
+  <div id="root" onload="Page_OnLoaded();">
+    <h3 id="title-ui">What's next?</h3>
+    <div id="search-ui">
+      <fluent-text-field id="search-box-ui" appearance="outline" placeholder="Search in the web"></fluent-text-field>
+      <i class="fluent-icon" style="font-size: 16px; display: inline-block; position: relative; float: right; top: -27px; right: 7px;"></i>
     </div>
+    <div id="switcher-ui" class="ms-acryl">
+      <fluent-tabs id="switcher-tabs-ui" activeid="analog">
+        <fluent-tab id="analog">Analog</fluent-tab>
+        <fluent-tab id="digital">Digital</fluent-tab>
+        <fluent-tab-panel>
+
+        </fluent-tab-panel>
+        <fluent-tab-panel>
+
+        </fluent-tab-panel>
+      </fluent-tabs>
+    </div>
+    <div id="clock-container">
+      <div id="clock-ui" class="clock">
+        <div class="hour">
+          <div class="hr" id="hr"></div>
+        </div>
+        <div class="min">
+          <div class="mn" id="mn"></div>
+        </div>
+        <div class="sec">
+          <div class="sc" id="sc"></div>
+        </div>
+      </div>
     </div>
   </div>
 </body>

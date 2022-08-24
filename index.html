@@ -19,7 +19,6 @@
   <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
   
   <!-- Local -->
-  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="fonts/FluentSystemIcons-Regular.css" />
 
   <script type="module" src="helpers/ThemeHelper.js"></script>
@@ -58,7 +57,7 @@
       <span id="nav-selector" class="navigation-bar-selector" style="top: 32px;"></span>
     </span>
     <div id="container" class="container" onresize="Container_OnResized();">
-      <iframe id="frame" src="pages/clock.html" />
+      <iframe id="frame" src="pages/clock.html" style="overflow:hidden; overflow-x:hidden; overflow-y:hidden; height:100%; width:100%; position:absolute; top:0px; left:0px; right:0px; bottom:0px" height="100%" width="100%" />
     </div>
   </div>
   <script src="index.js"></script>

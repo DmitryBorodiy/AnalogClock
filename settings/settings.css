@@ -1,0 +1,28 @@
+﻿@media (prefers-color-scheme: light){
+  body {
+    background-color: rgb(250, 250, 250);
+    color: rgb(15, 15, 15);
+  }
+}
+
+@media (prefers-color-scheme: dark){
+  body {
+    background-color: rgb(32, 32, 32);
+    color: rgb(253, 253, 253);
+  }
+}
+
+body{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+#title-ui{
+  position: absolute;
+  top: 15px;
+  left: 110px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+}

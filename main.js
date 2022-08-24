@@ -1,4 +1,11 @@
-﻿import { ThemeHelper } from "./helpers/ThemeHelper.js";
+﻿import { 
+    ThemeHelper,
+    KnownDeviceTheme
+} from "./helpers/ThemeHelper.js";
+
+import{
+    Settings
+} from "./settings/settings.js";
 
 //UI elements
 var clock_menu_item = document.getElementById("clock-menu-item");
@@ -8,6 +15,7 @@ var navigation_selector = document.getElementById("nav-selector");
 var world_clock_menu_item = document.getElementById("world-clock-menu-item");
 var whatsnew_menu_item = document.getElementById("whatsnew-menu-item");
 var container = document.getElementById("container");
+var frameUI = document.getElementById("frame");
 
 //Icons
 var clock_icon = document.getElementById("clock-icon");
@@ -24,6 +32,7 @@ var world_clock_label = document.getElementById("world-clock-label");
 var whatsnew_label = document.getElementById("whatsnew-label");
 
 let theme = new ThemeHelper();
+let settings = new Settings();
 
 window.onload = function(){
   App();
@@ -45,12 +54,38 @@ function ControlAnimation(element) {
 function App(){
   try{
     theme.SetTheme();
+    
+    var appTheme = settings.Theme();
+
+    if(appTheme != null){
+        if(appTheme == "Light"){
+
+        }
+        else if(appTheme == "Dark"){
+
+        }
+        else{
+
+        }
+    }
+    else{
+        var head = document.getElementsByTagName("head")[0];
+        var link = document.createElement("link");
+
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'style.css';
+
+        head.appendChild(link);
+    }
 
     clock_menu_item.onclick = function() 
     { 
         ControlAnimation("#clock-menu-item");
 
         NavigationBar_Select(0); 
+
+        document.getElementById("frame").src = "pages/clock.html";
     };
 
     world_clock_menu_item.onclick = function() 
@@ -60,7 +95,7 @@ function App(){
     { ControlAnimation("#weather-menu-item"); NavigationBar_Select(2); };
 
     ssettings_menu_item.onclick = function() 
-    { ControlAnimation("#settings-menu-item"); NavigationBar_Select(7); };
+    { ControlAnimation("#settings-menu-item"); NavigationBar_Select(7); document.getElementById("frame").src = "settings/settings.html"; };
 
     whatsnew_menu_item.onclick = function() 
     { ControlAnimation("#whatsnew-menu-item"); NavigationBar_Select(8); };
@@ -213,6 +248,15 @@ function NavigationBar_Select(index){
                 whatsnew_icon.innerHTML = "";
             break;
         }
+    }
+    catch(e){
+        console.log(e.toString());
+    }
+}
+
+function NavigateFrame(path){
+    try{
+        frameUI.src = path.toString();
     }
     catch(e){
         console.log(e.toString());

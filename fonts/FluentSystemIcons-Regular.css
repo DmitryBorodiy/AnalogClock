@@ -18,6 +18,16 @@
   font-style: normal;
 }
 
+.fluent-icon-filled-accent{
+  font-family: "FluentSystemIcons-Filled";
+  color: var(--accent-color);
+  font-style: normal;
+  text-align: center;
+  font-size: 34px;
+  position: relative;
+  top: 16px;
+}
+
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
     font-family: FluentSystemIcons-Regular !important;
     font-style: normal;
