@@ -59,13 +59,34 @@ function App(){
 
     if(appTheme != null){
         if(appTheme == "Light"){
+            var head = document.getElementsByTagName("head")[0];
+            var link = document.createElement("link");
 
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'styleLight.css';
+
+            head.appendChild(link);
         }
         else if(appTheme == "Dark"){
+            var head = document.getElementsByTagName("head")[0];
+            var link = document.createElement("link");
 
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'styleDark.css';
+
+            head.appendChild(link);
         }
         else{
+            var head = document.getElementsByTagName("head")[0];
+            var link = document.createElement("link");
 
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'style.css';
+
+            head.appendChild(link);
         }
     }
     else{
