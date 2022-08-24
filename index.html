@@ -26,7 +26,7 @@
   <script type="module" src="main.js"></script>
 </head>
 
-<body>
+<body onload="Page_OnLoaded();">
   <div id="root">
     <span id="app-navigation-bar" class="navigation-bar" style="left: 0px; top: 0px; bottom: 0px; width: 76px; height: 100%; border-radius: 0 10px 10px 0; text-align: center; display: table;">
       <div id="clock-menu-item" class="navigation-bar-item" style="margin-top: 5px;">
@@ -44,6 +44,12 @@
         <span id="weather-label" class="navigation-bar-label">Weather</span>
         <div class="material-ripple"></div>
       </div>
+      <div id="whatsnew-menu-item" class="navigation-bar-item" style="margin-top: 0px; position: absolute; bottom: 90px; left: -1px;">
+        <i id="whatsnew-icon" class="fluent-icon navigation-bar-item-icon"></i><br />
+        <span id="whatsnew-label" class="navigation-bar-label">What's new?</span>
+        <fluent-badge id="whatsnew-badge" class="navigation-bar-badge" appearance="accent">New</fluent-badge>
+        <div class="material-ripple"></div>
+      </div>
       <div id="settings-menu-item" class="navigation-bar-item" style="margin-top: 0px; position: absolute; bottom: 5px; left: -1px;">
         <i id="settings-icon" class="fluent-icon navigation-bar-item-icon"></i><br />
         <span id="settings-label" class="navigation-bar-label">Settings</span>
@@ -51,6 +57,10 @@
       </div>
       <span id="nav-selector" class="navigation-bar-selector" style="top: 32px;"></span>
     </span>
+    <div id="container" class="container" onresize="Container_OnResized();">
+      <iframe id="frame" src="pages/clock.html" />
+    </div>
   </div>
+  <script src="index.js"></script>
 </body>
 </html>

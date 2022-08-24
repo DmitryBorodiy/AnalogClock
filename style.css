@@ -41,6 +41,7 @@
   box-shadow: 10px 0px 26px -2px rgba(0,0,0,0.02);
   -webkit-box-shadow: 10px 0px 26px -2px rgba(0,0,0,0.02);
   -moz-box-shadow: 10px 0px 26px -2px rgba(0,0,0,0.02);
+  z-index: 11111111111111111111111111111111111111111111;
 }
 
 .fluent-icon{
@@ -81,9 +82,18 @@
   border-radius: 6px;
 }
 
+.tapped{
+  animation-name: tapped;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-play-state: running;
+}
+
 .navigation-bar-label{
   position: relative;
   top: 17px;
+  display: block;
 }
 
 .navigation-bar-selector{
@@ -99,6 +109,14 @@
   color: var(--accent-color);
   position: relative;
   top: 17px;
+  display: block;
+}
+
+.navigation-bar-badge{
+  position: relative;
+  float: right;
+  top: -43px;
+  left: -8px;
 }
 
 .material-ripple {
@@ -125,9 +143,28 @@
 	animation: ripple 0.6s linear;
 }
 
+.container{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  display: block;
+}
+
 @keyframes ripple {
 	100% {
 		transform: scale(2.5);
 		opacity: 0;
 	}
+}
+
+@keyframes tapped{
+  0% {
+    transform: scale(1.0);
+  }  
+  50% {
+    transform: scale(0.6);
+  }
+  100% {
+    transform: scale(1.0);
+  }
 }
