@@ -1,4 +1,4 @@
-﻿import {
+import {
   ThemeHelper,
   KnownDeviceTheme
 } from "../helpers/ThemeHelper.js";
@@ -25,7 +25,6 @@ provideFluentDesignSystem().register(allComponents);
 function Page_OnLoaded(){
   try {
     let themeHelper = new ThemeHelper(true);
-
     if(themeHelper.GetCurrentTheme() == KnownDeviceTheme.Light){
       const layer = document.querySelector("#root");
       baseLayerLuminance.setValueFor(layer, StandardLuminance.LightMode);

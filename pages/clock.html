@@ -52,6 +52,21 @@
           <div class="sc" id="sc"></div>
         </div>
       </div>
+      <script type="text/javascript">
+        const deg = 6;
+        var hr = document.getElementById("hr");
+        var mn = document.getElementById("mn");
+        var sc = document.getElementById("sc");
+        
+        let day = new Date();
+        let hh = day.getHours() * 30;
+        let mm = day.getMinutes() * deg;
+        let ss = day.getSeconds() * deg;
+        
+        hr.style.transform = `rotate(${hh + (mm /12)}deg)`;
+        //mn.style.transform = ˋrotateZ(${mm}+deg)ˋ;
+        //sc.style.transform = ˋrotateZ(${ss}+deg)ˋ;
+      </script>
     </div>
   </div>
 </body>
