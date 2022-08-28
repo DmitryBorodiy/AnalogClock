@@ -13,6 +13,11 @@
   <!-- WinUI -->
   <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
   
+  <!-- Fabric JS -->
+  <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.min.css" />
+  <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.components.min.css" />
+  <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/js/fabric.min.js"></script>
+  
   <!-- Local -->
   <link rel="stylesheet" href="css/clock.css" />
   <link rel="stylesheet" href="../fonts/FluentSystemIcons-Regular.css" />
@@ -27,6 +32,9 @@
     <div id="search-ui">
       <fluent-text-field id="search-box-ui" appearance="outline" placeholder="Search in the web"></fluent-text-field>
       <i class="fluent-icon" style="font-size: 16px; display: inline-block; position: relative; float: right; top: -27px; right: 7px;"></i>
+      <div class="search-results-box">
+        
+      </div>
     </div>
     <div id="switcher-ui" class="ms-acryl">
       <fluent-tabs id="switcher-tabs-ui" activeid="analog">
@@ -53,19 +61,25 @@
         </div>
       </div>
       <script type="text/javascript">
-        const deg = 6;
-        var hr = document.getElementById("hr");
-        var mn = document.getElementById("mn");
-        var sc = document.getElementById("sc");
+        function SetClockTime(){
+          const deg = 6;
+          var hr = document.getElementById("hr");
+          var mn = document.getElementById("mn");
+          var sc = document.getElementById("sc");
+          
+          let day = new Date();
+          let hh = day.getHours() * 30;
+          let mm = day.getMinutes() * deg;
+          let ss = day.getSeconds() * deg;
+          
+          hr.style.transform = `rotate(${hh + (mm /12)}deg)`;
+          mn.style.transform = `rotateZ(${mm}deg)`;
+          sc.style.transform = `rotateZ(${ss}deg)`;
+          
+          //debugger;
+        }
         
-        let day = new Date();
-        let hh = day.getHours() * 30;
-        let mm = day.getMinutes() * deg;
-        let ss = day.getSeconds() * deg;
-        
-        hr.style.transform = `rotate(${hh + (mm /12)}deg)`;
-        //mn.style.transform = ˋrotateZ(${mm}+deg)ˋ;
-        //sc.style.transform = ˋrotateZ(${ss}+deg)ˋ;
+        setInterval(SetClockTime, 1000);
       </script>
     </div>
   </div>
