@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -25,6 +25,23 @@
     <body>
         <div id="root">
             <h3 id="title-ui">Settings</h3>
+            <div id="settings-layout">
+              <a>App theme</a>
+              <fluent-radio-group id="theme-radio-group" orientation="vertical" style="margin-top: 12px;">
+                <fluent-radio id="light-theme-radio">Light</fluent-radio>
+                <fluent-radio id="dark-theme-radio" style="margin-top: 5px;">Dark</fluent-radio>
+                <fluent-radio id="default-theme-radio" style="margin-top: 5px;">Default</fluent-radio>
+              </fluent-radio-group><br />
+              <a style="margin-top: 46px;">Where to find:</a><br />
+              <fluent-select id="search-system-select" title="Where find:" style="margin-top: 8px;">
+                <fluent-option value="1">Bing</fluent-option>
+                <fluent-option value="2">Google</fluent-option>
+                <fluent-option value="3">DuckDuckGo</fluent-option>
+                <fluent-option value="4">Yahoo</fluent-option>
+                <fluent-option value="5">Wolfram</fluent-option>
+                <fluent-option value="3">Wikipedia</fluent-option>
+              </fluent-select>
+            </div>
         </div>
     </body>
 </html>

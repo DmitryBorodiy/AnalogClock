@@ -1,4 +1,4 @@
-﻿import { 
+import { 
     ThemeHelper,
     KnownDeviceTheme
 } from "./helpers/ThemeHelper.js";

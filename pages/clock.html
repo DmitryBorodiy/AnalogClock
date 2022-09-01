@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -18,36 +18,21 @@
   <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.components.min.css" />
   <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/js/fabric.min.js"></script>
   
+  <!-- jQuery -->
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+  
   <!-- Local -->
   <link rel="stylesheet" href="css/clock.css" />
   <link rel="stylesheet" href="../fonts/FluentSystemIcons-Regular.css" />
 
   <script type="module" src="clock.js"></script>
   <script type="module" src="../helpers/ThemeHelper.js"></script>
+  <script src="../helpers/SearchHelper.js"></script>
 </head>
 
 <body>
   <div id="root" onload="Page_OnLoaded();">
     <h3 id="title-ui">What's next?</h3>
-    <div id="search-ui">
-      <fluent-text-field id="search-box-ui" appearance="outline" placeholder="Search in the web"></fluent-text-field>
-      <i class="fluent-icon" style="font-size: 16px; display: inline-block; position: relative; float: right; top: -27px; right: 7px;"></i>
-      <div class="search-results-box">
-        
-      </div>
-    </div>
-    <div id="switcher-ui" class="ms-acryl">
-      <fluent-tabs id="switcher-tabs-ui" activeid="analog">
-        <fluent-tab id="analog">Analog</fluent-tab>
-        <fluent-tab id="digital">Digital</fluent-tab>
-        <fluent-tab-panel>
-
-        </fluent-tab-panel>
-        <fluent-tab-panel>
-
-        </fluent-tab-panel>
-      </fluent-tabs>
-    </div>
     <div id="clock-container">
       <div id="clock-ui" class="clock">
         <div class="hour">
@@ -61,26 +46,82 @@
         </div>
       </div>
       <script type="text/javascript">
-        function SetClockTime(){
+        function SetClockTime() {
           const deg = 6;
           var hr = document.getElementById("hr");
           var mn = document.getElementById("mn");
           var sc = document.getElementById("sc");
-          
+    
           let day = new Date();
           let hh = day.getHours() * 30;
           let mm = day.getMinutes() * deg;
           let ss = day.getSeconds() * deg;
-          
+    
           hr.style.transform = `rotate(${hh + (mm /12)}deg)`;
           mn.style.transform = `rotateZ(${mm}deg)`;
           sc.style.transform = `rotateZ(${ss}deg)`;
-          
+    
           //debugger;
         }
-        
+    
         setInterval(SetClockTime, 1000);
+    
+        function GetSearchSuggestions(query) {
+          try {
+            let suggestions = [];
+    
+            var xmlDoc = new XMLHttpRequest();
+            xmlDoc.open("GET", "http://www.google.com/complete/search?output=toolbar&q=" + query, false);
+    
+            xmlDoc.onreadystatechange = function() {
+              var doc = xmlDoc.responseXML;
+    
+              console.log(doc.toString());
+    
+              var output = $.parseXML(doc.toString());
+    
+              $('toplevel>CompleteSuggestion>suggestion', output).each(function(i, e) {
+                suggestions.push($(e).attr('data'));
+              });
+    
+              console.log(suggestions);
+            };
+    
+            xmlDoc.send(null);
+          }
+          catch (e) {
+            console.log(e.toString());
+          }
+        }
+    
+        //GetSearchSuggestions("Windows");
       </script>
+    </div>
+    <div id="search-ui">
+      <form>
+        <img id="search-system-icon" src="https://img.icons8.com/fluency/48/000000/bing--v1.png" />
+        <input id="search-box" class="search-input" type="search" placeholder="Search in Bing" autocomplete="on" />
+        <datalist id="search-list">
+          <option>Google</option>
+          <option>Bing</option>
+        </datalist>
+        <div class="autocom-box">
+          <!-- here list are inserted from javascript -->
+        </div>
+        <i id="search-box-icon" class="icon-ic_fluent_search_20_regular"></i>
+      </form>
+    </div>
+    <div id="switcher-ui" class="ms-acryl">
+      <fluent-tabs id="switcher-tabs-ui" activeid="analog">
+        <fluent-tab id="analog">Analog</fluent-tab>
+        <fluent-tab id="digital">Digital</fluent-tab>
+        <fluent-tab-panel>
+
+        </fluent-tab-panel>
+        <fluent-tab-panel>
+
+        </fluent-tab-panel>
+      </fluent-tabs>
     </div>
   </div>
 </body>

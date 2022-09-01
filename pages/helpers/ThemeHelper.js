@@ -1,4 +1,4 @@
-﻿import {
+import {
   StandardLuminance,
   baseLayerLuminance,
   fillColor,
@@ -14,7 +14,7 @@ export class ThemeHelper {
     }
   }
 
-  GetCurrentTheme(){
+  GetDefaultCurrentTheme(){
     try{
       const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -28,6 +28,32 @@ export class ThemeHelper {
       console.log(e.toString());
 
       return null;
+    }
+  }
+  
+  GetCurrentTheme(){
+    try{
+      var theme = localStorage.getItem("appTheme");
+      
+      if(theme != null){
+        if(theme.toString() == "Light"){
+          return "Light";
+        }
+        else if(theme.toString() == "Dark"){
+          return "Dark";
+        }
+        else{
+          return this.GetDefaultCurrentTheme();
+        }
+      }
+      else{
+        return this.GetDefaultCurrentTheme();
+      }
+    }
+    catch(e){
+      console.log(e.toString());
+      
+      return this.GetDefaultCurrentTheme();
     }
   }
 
@@ -55,6 +81,6 @@ export class ThemeHelper {
 }
 
 export const KnownDeviceTheme = {
-  Light: 0,
-  Dark: 1
+  Light: "Light",
+  Dark: "Dark"
 };
