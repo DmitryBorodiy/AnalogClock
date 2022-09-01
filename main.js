@@ -3,9 +3,6 @@ import {
     KnownDeviceTheme
 } from "./helpers/ThemeHelper.js";
 
-import{
-    Settings
-} from "./settings/settings.js";
 
 //UI elements
 var clock_menu_item = document.getElementById("clock-menu-item");

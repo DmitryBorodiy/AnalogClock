@@ -48,6 +48,10 @@ class SearchHelper{
 }
 
 const KnownSearchSystems = {
-  Google: "",
-  Bing: "https://www.bing.com/search?q="
+  Google: "https://www.google.com/search?q=",
+  Bing: "https://www.bing.com/search?q=",
+  DuckDuckGo: "https://duckduckgo.com/?q=",
+  Yahoo: "https://search.yahoo.com/search?p=",
+  Wolfram: "https://www.wolframalpha.com/input?i=",
+  Wikipedia: "https://ru.m.wikipedia.org/w/index.php?go=Go&search="
 };

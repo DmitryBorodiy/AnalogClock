@@ -16,13 +16,16 @@
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
         
         <!-- WinUI -->
+        <link rel="stylesheet" href="https://unpkg.com/browse/@n8d/htwoo-core@<version>/dist/css/htwoo.min.css" />
+        <script src="https://unpkg.com/browse/@n8d/htwoo-core@<version>/dist/js/"></script>
         <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
 
         <!-- Local -->
         <link rel="stylesheet" href="settings.css" />
-        <script type="module" src="settings.js"></script>
+        <script src="../helpers/SearchHelper.js"></script>
+        <script type="module" src="settings-ui.js"></script>
     </head>
-    <body>
+    <body onload="Page_OnLoaded();">
         <div id="root">
             <h3 id="title-ui">Settings</h3>
             <div id="settings-layout">
@@ -33,15 +36,17 @@
                 <fluent-radio id="default-theme-radio" style="margin-top: 5px;">Default</fluent-radio>
               </fluent-radio-group><br />
               <a style="margin-top: 46px;">Where to find:</a><br />
-              <fluent-select id="search-system-select" title="Where find:" style="margin-top: 8px;">
-                <fluent-option value="1">Bing</fluent-option>
-                <fluent-option value="2">Google</fluent-option>
-                <fluent-option value="3">DuckDuckGo</fluent-option>
-                <fluent-option value="4">Yahoo</fluent-option>
-                <fluent-option value="5">Wolfram</fluent-option>
-                <fluent-option value="3">Wikipedia</fluent-option>
-              </fluent-select>
+              <!--<fluent-select id="search-system-select" title="Where find:" style="margin-top: 8px;">
+                <fluent-option value="1" onclick="SearchSystemComboBox_SelectedItem(KnownSearchSystems.Bing);">Bing</fluent-option>
+                <fluent-option value="2" onclick="SearchSystemComboBox_SelectedItem(KnownSearchSystems.Google);">Google</fluent-option>
+                <fluent-option value="3" onclick="SearchSystemComboBox_SelectedItem(KnownSearchSystems.DuckDuckGo);">DuckDuckGo</fluent-option>
+                <fluent-option value="4" onclick="SearchSystemComboBox_SelectedItem(KnownSearchSystems.Yahoo);">Yahoo</fluent-option>
+                <fluent-option value="5" onclick="SearchSystemComboBox_SelectedItem(KnownSearchSystems.Wolfram);">Wolfram</fluent-option>
+                <fluent-option value="6" onclick="SearchSystemComboBox_SelectedItem(KnownSearchSystems.Wikipedia);">Wikipedia</fluent-option>
+              </fluent-select> -->
+              
             </div>
         </div>
+        <script src="settings.js"></script>
     </body>
 </html>
