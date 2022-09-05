@@ -31,9 +31,13 @@ class Settings {
   }
 }
 
+var SearchSystemBox;
+
 function Page_OnLoaded(){
   try{
     SettingsInitialize();
+
+    SearchSystemBox = document.getElementById("search-system-box");
   }
   catch(e){
     console.log(e.toString());
@@ -50,10 +54,10 @@ function SettingsInitialize(){
         
         switch(settings.SearchSystem().toString()){
           case KnownSearchSystems.Bing:
-            document.getElementById("search-system-select").value = "Bing";
+            document.getElementById("search-system-box").value = "Bing";
           break;
           case KnownSearchSystems.Google:
-            document.getElementById("search-system-select").value = "Google";
+            document.getElementById("search-system-box").value = "Google";
             
             console.log("Google");
           break;
@@ -78,17 +82,31 @@ function SettingsInitialize(){
   }
 }
 
-function SearchSystemComboBox_SelectedItem(value) {
+function SearchSystemComboBox_SelectedItem() {
   try {
-    let settings = new Settings(true);
-
-    if (settings != null) {
-      window.localStorage.setItem("searchSystem", value.toString());
-      
-      console.log(window.localStorage.getItem("searchSystem"));
-    }
-    else {
-      console.log("Can't initialize settings instance.");
+    var selectedItem = document.getElementById("search-system-box").selectedIndex;
+    
+    switch(selectedItem){
+      case 0:
+        console.log("Setup search to Bing.");
+        
+        window.localStorage.setItem("searchSystem", KnownSearchSystems.Bing);
+      break;
+      case 1:
+        console.log("Setup search to Google.");
+        
+        window.localStorage.setItem("searchSystem", KnownSearchSystems.Google);
+      break;
+      case 2:
+        console.log("Setup search to DuckDuckGo.");
+        
+        window.localStorage.setItem("searchSystem", KnownSearchSystems.DuckDuckGo);
+      break;
+      case 3:
+        console.log("Setup search to Yahoo.");
+        
+        window.localStorage.setItem("searchSystem", KnownSearchSystems.Yahoo);
+      break;
     }
   }
   catch (e) {
