@@ -32,12 +32,22 @@ class Settings {
 }
 
 var SearchSystemBox;
+var ThemeRadioGroup;
+
+const KnownDeviceTheme = {
+  Light: "Light",
+  Dark: "Dark"
+};
+
+const appThemeSettingKey = "appTheme";
+const searchSystemSettingKey = "searchSystem";
 
 function Page_OnLoaded(){
   try{
-    SettingsInitialize();
-
     SearchSystemBox = document.getElementById("search-system-box");
+    ThemeRadioGroup = document.getElementById("theme-radio-group");
+    
+    SettingsInitialize();
   }
   catch(e){
     console.log(e.toString());
@@ -58,27 +68,64 @@ function SettingsInitialize(){
           break;
           case KnownSearchSystems.Google:
             document.getElementById("search-system-box").value = "Google";
-            
-            console.log("Google");
           break;
           case KnownSearchSystems.DuckDuckGo:
-            document.getElementById("search-system-select").value = "DuckDuckGo";
+            document.getElementById("search-system-box").value = "DuckDuckGo";
           break;
           case KnownSearchSystems.Yahoo:
-            document.getElementById("search-system-select").value = "Yahoo";
+            document.getElementById("search-system-box").value = "Yahoo";
           break;
           case KnownSearchSystems.Wolfram:
-            document.getElementById("search-system-select").value = "Wolfram";
+            document.getElementById("search-system-box").value = "Wolfram";
           break;
           case KnownSearchSystems.Wikipedia:
-            document.getElementById("search-system-select").value = "Wikipedia";
+            document.getElementById("search-system-box").value = "Wikipedia";
           break;
         }
+      }
+      
+      if(window.localStorage.getItem(appThemeSettingKey) != null){
+        var appTheme = window.localStorage.getItem(appThemeSettingKey).toString();
+        
+        if(appTheme == "Light"){
+          document.getElementById("theme-radio-group").value = "light";
+        }
+        else if(appTheme == "Dark"){
+          document.getElementById("theme-radio-group").value = "dark";
+        }
+        else{
+          document.getElementById("theme-radio-group").value = "default";
+        }
+      }
+      else{
+          if(GetDefaultCurrentTheme() == KnownDeviceTheme.Light){
+            document.getElementById("theme-radio-group").value = "light";
+          }
+          else if(GetDefaultCurrentTheme() == KnownDeviceTheme.Dark){
+            document.getElementById("theme-radio-group").value = "dark";
+          }
       }
     }
   }
   catch(e){
     console.log(e.toString());
+  }
+}
+
+function GetDefaultCurrentTheme() {
+  try {
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+
+    if (darkThemeMq.matches) {
+      return KnownDeviceTheme.Dark;
+    } else {
+      return KnownDeviceTheme.Light;
+    }
+  }
+  catch (e) {
+    console.log(e.toString());
+
+    return null;
   }
 }
 
@@ -107,9 +154,40 @@ function SearchSystemComboBox_SelectedItem() {
         
         window.localStorage.setItem("searchSystem", KnownSearchSystems.Yahoo);
       break;
+      case 4:
+        console.log("Setup search to Wolfram.");
+        
+        window.localStorage.setItem("searchSystem", KnownSearchSystems.Wolfram);
+      break;
+      case 5:
+        console.log("Setup search to Wikipedia.");
+        
+        window.localStorage.setItem("searchSystem", KnownSearchSystems.Wikipedia);
+      break;
     }
   }
   catch (e) {
+    console.log(e.toString());
+  }
+}
+
+function ThemeRadioGroup_SelectionChanged(){
+  try{
+    var selectedValue = document.getElementById("theme-radio-group").value.toString();
+    
+    switch(selectedValue){
+      case "light":
+        window.localStorage.setItem(appThemeSettingKey, KnownDeviceTheme.Light);
+      break;
+      case "dark":
+        window.localStorage.setItem(appThemeSettingKey, KnownDeviceTheme.Dark);
+      break;
+      case "default":
+        window.localStorage.setItem(appThemeSettingKey, "Default");
+      break;
+    }
+  }
+  catch(e){
     console.log(e.toString());
   }
 }

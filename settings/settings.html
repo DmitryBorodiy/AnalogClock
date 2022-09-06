@@ -29,7 +29,7 @@
             <h3 id="title-ui">Settings</h3>
             <div id="settings-layout">
               <a>App theme</a>
-              <fast-radio-group id="theme-radio-group" orientation="vertical" name="favorite-fruit" style="margin-top: 10px;">
+              <fast-radio-group id="theme-radio-group" orientation="vertical" name="favorite-fruit" value="light" style="margin-top: 10px;" onchange="ThemeRadioGroup_SelectionChanged();">
                 <fast-radio value="light">Light</fast-radio>
                 <fast-radio value="dark">Dark</fast-radio>
                 <fast-radio value="default">Default</fast-radio>
@@ -41,6 +41,8 @@
                 <fast-option value="Google">Google</fast-option>
                 <fast-option value="DuckDuckGo">DuckDuckGo</fast-option>
                 <fast-option value="Yahoo">Yahoo</fast-option>
+                <fast-option value="Wolfram">Wolfram</fast-option>
+                <fast-option value="Wikipedia">Wikipedia</fast-option>
               </fast-select>
             </div>
         </div>
